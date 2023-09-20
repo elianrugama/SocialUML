@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-hw6_dp47mi_x@3^6*j#&*@^jf5_#1%-ud2+fx92p1yhn6ag*l1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".vercel.app"]
+ALLOWED_HOSTS = [".vercel.app", "127.0.0.1", "localhost",]
 
 
 # Application definition
@@ -77,20 +77,20 @@ WSGI_APPLICATION = 'socialuml.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}"""
+}
 #posgres connect dj-database-url
 
-DATABASES = {
+""""DATABASES = {
     'default': dj_database_url.config(
         default='postgres://default:RPpMmzr4gDQ6@ep-icy-hat-28304462.us-east-1.postgres.vercel-storage.com:5432/verceldb',
         conn_max_age=600,
     )
-}
+}""""
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
