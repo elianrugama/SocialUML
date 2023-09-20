@@ -77,20 +77,20 @@ WSGI_APPLICATION = 'socialuml.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}"""
+}
 #posgres connect dj-database-url
 
-DATABASES = {
+"""DATABASES = {
     'default': dj_database_url.config(
         default='postgres://default:RPpMmzr4gDQ6@ep-icy-hat-28304462.us-east-1.postgres.vercel-storage.com:5432/verceldb',
         conn_max_age=600,
     )
-}
+}"""
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
