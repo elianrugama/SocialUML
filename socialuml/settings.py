@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'socialuml.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         default='postgres://default:RPpMmzr4gDQ6@ep-icy-hat-28304462.us-east-1.postgres.vercel-storage.com:5432/verceldb',
-        conn_max_age=600
+        conn_max_age=600,
     )
 }
 
