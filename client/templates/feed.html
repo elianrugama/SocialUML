@@ -50,10 +50,10 @@
                         </span>
 
                         <div id="logo">
-                            <a href="feed.html">
-                                <img src="{% static 'assets/images/socilauml.png'%}" class="logo" alt="SocialUML" width="50px" height="100px" title="SocialUML">
+                            <a href="#">
+                                <img src="{% static 'assets/images/socialuml.png'%}" class="logo" alt="SocialUML" width="100px" height="100px" title="SocialUML">
                                  <h5 class="text-blue-500" style="display:flex; justify-content:space-between; position: absolute; top: 
-                                 5px; left: 100%;">SocialUML</h5>
+                                 5px; left: 80%;">SocialUML</h5>
                             </a>
                         </div>
                     </div>
@@ -170,13 +170,13 @@
 
 
                             <a href="#">
-                                <img src="assets/images/avatars/avatar-2.jpg" class="is_avatar" alt="">
+                                <img src="{% static 'assets/images/socialuml.png'%}" class="is_avatar" alt="">
                             </a>
                             <div uk-drop="mode: click;offset:5" class="header_dropdown profile_dropdown">
 
                                 <a href="/cuenta" class="user">
                                     <div class="user_avatar">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                        <img src="{% static 'assets/images/socialuml.png'%}" alt="">
                                     </div>
                                     <div class="user_name">
                                         <div> {{user.username}} </div>
@@ -1971,7 +1971,7 @@
                         En vivo </a>
                     <button type="submit"
                         class="bg-blue-600 flex h-9 items-center justify-center rounded-md text-white px-5 font-medium">
-                        Compartir </button>
+                        Publicar </button>
                 </div>
 
                 <a href="#" hidden
