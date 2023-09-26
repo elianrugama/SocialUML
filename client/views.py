@@ -4,6 +4,7 @@ from api.models import Posts, Comments, Likes, LikesComments, Historias, Mensaje
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 
+
  
 
 # Create your views here.
@@ -47,3 +48,33 @@ def Post(request):
     
     else:
         return redirect('/')
+    
+
+def Perfil(request):
+    posts = Posts.objects.filter(id_user = request.user)
+    posts = posts[::-1]
+    historias = Historias.objects.all()
+    historias = historias[::-1]
+    mensajes = Mensajes.objects.all()
+    mensajes = mensajes[::-1]
+    users = User.objects.all()
+
+    data = {
+        'posts': posts,
+        "historias": historias,
+        "mensajes": mensajes,
+        "users": users
+
+    }
+    return render(request, 'perfil.html', data)
+    
+
+
+
+
+   
+
+   
+    
+    
+      
