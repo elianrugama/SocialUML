@@ -36,7 +36,7 @@ async function getPosts() {
 
                                     <ul class="space-y-1">
                                         <li>
-                                            <a href="#"
+                                            <a uk-toggle="target: #create-post-modal2"
                                                 class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
                                                 <i class="uil-share-alt mr-1"></i> Compartir
                                             </a>
@@ -95,7 +95,7 @@ async function getPosts() {
                                 <a href="#" class="flex items-center space-x-2">
                                     <div class="p-2 rounded-full  text-black lg:bg-gray-100 dark:bg-gray-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                            fill="currentColor" width="22" height="22" class="dark:text-gray-100">
+                                            fill="currentColor" width="22" height="22" class="dark:text-gray-100"  style="color: #3b5998;">
                                             <path
                                                 d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
                                         </svg>
@@ -113,7 +113,7 @@ async function getPosts() {
                                     </div>
                                     <div> Comentarios</div>
                                 </button>
-                                <a href="#" class="flex items-center space-x-2 flex-1 justify-end">
+                                <button uk-toggle="target: #create-post-modal2" class="flex items-center space-x-2 flex-1 justify-end">
                                     <div class="p-2 rounded-full  text-black lg:bg-gray-100 dark:bg-gray-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                             fill="currentColor" width="22" height="22" class="dark:text-gray-100">
@@ -122,7 +122,7 @@ async function getPosts() {
                                         </svg>
                                     </div>
                                     <div> Compartir</div>
-                                </a>
+                                </button>
                             </div>
                             <div id="comentarios${post.id}" style="display: none;">
 

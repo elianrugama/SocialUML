@@ -2,35 +2,35 @@
 {% load static %}
 
 {% block content %}
-<style>
-    
-</style>
-<div class="lg:flex lg:space-x-10">
+
+
+<div class="lg:flex lg:space-x-10" id="historias1">
     <div class="lg:w-3/4 lg:px-20 space-y-7">
 
         <!-- user story -->
-        <div class="user_story grid md:grid-cols-5 grid-cols-3 gap-2 lg:-mx-20 relative">
-
-            {% for historia in historias %}
-            <a href="#create-post" uk-toggle="target: body ; cls: story-active">
-                <div class="single_story">
-                    <img src="/media/{{historia.image}}" alt="">
-                    <div class="story-avatar"> <img
-                            src="/media/{{historia.image}}" alt="">
+        
+        <div class="user_story relative" id="historias12">
+            <div class="flex overflow-x-auto md:overflow-hidden space-x-2">
+                {% for historia in historias %}
+                <a href="#create-post" uk-toggle="target: body ; cls: story-active">
+                    <div class="single_story">
+                        <img src="/media/{{historia.image}}" alt="" class="w-full">
+                        <div class="story-avatar">
+                            <img src="/media/{{historia.image}}" alt="" class="w-full">
+                        </div>
+                        <div class="story-content">
+                            <h4>{{historia.username}}</h4>
+                        </div>
                     </div>
-                    <div class="story-content">
-                        <h4>{{historia.username}}</h4>
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
-            
-            <span class="absolute bg-white lg:flex items-center justify-center p-2 rounded-full 
-            shadow-md text-xl w-9 z-10 uk-position-center-right -mr-4 hidden"
+                </a>
+                {% endfor %}
+            </div>
+            <span class="absolute bg-white lg:flex items-center justify-center p-2 rounded-full shadow-md text-xl w-9 z-10 uk-position-center-right -mr-4 hidden"
                 uk-toggle="target: body ; cls: story-active">
-                <i class="icon-feather-chevron-right"></i></span>
-
+                <i class="icon-feather-chevron-right"></i>
+            </span>
         </div>
+        
 
         <!-- create post -->
         <div class="card lg:mx-0 p-4" uk-toggle="target: #create-post-modal">
