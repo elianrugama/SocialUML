@@ -148,6 +148,7 @@ async function getPosts() {
                         </div>
 
                     </div>
+                    <br>
 `;
     });
 
@@ -173,17 +174,7 @@ async function cargarComentarios(div, id) {
 
         html += `
         <div class="flex items-center space-x-3 pt-2">
-                                <div class="flex items-center">
-                                    <img src="${post.userimage}" alt=""
-                                        class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
-                                    <img src="${post.userimage}" alt=""
-                                        class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
-                                    <img src="${post.userimage}" alt=""
-                                        class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
-                                </div>
-                                <div class="dark:text-gray-100">
-                                    Liked <strong> Johnson</strong> and <strong> 209 Others </strong>
-                                </div>
+                                
                             </div>
 
                             <div class="border-t py-4 space-y-4 dark:border-gray-600">
@@ -200,12 +191,9 @@ async function cargarComentarios(div, id) {
                                                 class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800">
                                             </div>
                                         </div>
-                                        <div class="text-sm flex items-center space-x-3 mt-2 ml-5">
-                                            <a href="#" class="text-red-600"> <i class="uil-heart"></i>Me encanta</a>
-                                            <a href="#"> Replay </a>
-                                            <span> 3d </span>
+                                        
                                             ${post.username == document.getElementById('userUsername').value ? `
-                                    <button class="btn btn-danger" onclick="eliminarComentario(${post.id});">
+                                    <button class="btn btn-danger" onclick="eliminarComentario(${post.id},${id});">
                                     <i class="uil-trash-alt"></i>
                                     </button>
                                     ` : ``}
@@ -217,7 +205,6 @@ async function cargarComentarios(div, id) {
 
                             </div>
 
-                            <a href="#" class="hover:text-blue-600 hover:underline"> Veiw 8 more Comments </a>
 
                             
                             `
@@ -227,8 +214,8 @@ async function cargarComentarios(div, id) {
     div2.innerHTML = html;
 
 }
-async function cargarComentarios2(div, id) {
-    var div = document.getElementById(div);
+async function cargarComentarios2(id) {
+    
     var div2 = document.getElementById('comentarios2' + id);
     var html = '';
     const res = await fetch('/api/comentarios/' + id);
@@ -241,17 +228,7 @@ async function cargarComentarios2(div, id) {
 
         html += `
         <div class="flex items-center space-x-3 pt-2">
-                                <div class="flex items-center">
-                                    <img src="${post.userimage}" alt=""
-                                        class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
-                                    <img src="${post.userimage}" alt=""
-                                        class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
-                                    <img src="${post.userimage}" alt=""
-                                        class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
-                                </div>
-                                <div class="dark:text-gray-100">
-                                    Liked <strong> Johnson</strong> and <strong> 209 Others </strong>
-                                </div>
+                                
                             </div>
 
                             <div class="border-t py-4 space-y-4 dark:border-gray-600">
@@ -268,21 +245,20 @@ async function cargarComentarios2(div, id) {
                                                 class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800">
                                             </div>
                                         </div>
-                                        <div class="text-sm flex items-center space-x-3 mt-2 ml-5">
-                                            <a href="#" class="text-red-600"> <i class="uil-heart"></i>Me encanta</a>
-                                            <a href="#"> Replay </a>
-                                            <span> 3d </span>
+                                        
+                                            ${post.username == document.getElementById('userUsername').value ? `
+                                    <button class="btn btn-danger" onclick="eliminarComentario(${post.id},${id});">
+                                    <i class="uil-trash-alt"></i>
+                                    </button>
+                                    ` : ``}
                                         </div>
                                     </div>
-                                    ${post.username == document.getElementById('userUsername').value ? `
-                                    <button class="btn btn-danger" onclick="eliminarComentario(${post.id});">Eliminar</button>
-                                    ` : ``}
+                                    
                                 </div>
                                 
 
                             </div>
 
-                            <a href="#" class="hover:text-blue-600 hover:underline"> Veiw 8 more Comments </a>
 
                             
                             `
@@ -311,4 +287,13 @@ function enviarComentario(id) {
 
 
 
+}
+function eliminarComentario(id,div2) {
+    //fetch get
+    
+    fetch("/eliminarcomentarios/" + id)
+    .then(function (res) {
+        console.log(res);
+        cargarComentarios2(div2);
+    });
 }

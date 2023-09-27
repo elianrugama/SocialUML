@@ -11,6 +11,7 @@ urlpatterns= [
     path('api/', include(router.urls)),
     path('api/comentarios/<int:id_post>/', Comentarios, name='comentarios'),
     path('api/comentar/', Comentar, name='comentar'),
+    
 
     
 

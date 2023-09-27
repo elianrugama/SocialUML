@@ -1,0 +1,137 @@
+{% extends "feed.html" %}
+{% load static %}
+
+{% block content %}
+<div class=""> 
+  
+    <span uk-toggle="target: .message-content;" class="fixed left-0 top-36 bg-red-600 z-10 py-1 px-4 rounded-r-3xl text-white"> Users</span>
+
+    <div class="messages-container">
+        <div class="messages-container-inner">
+
+           
+            <div class="messages-inbox">
+                <div class="messages-headline">
+                    <div class="input-with-icon" hidden>
+                            <input id="autocomplete-input" type="text" placeholder="Search">
+                        <i class="icon-material-outline-search"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold">Chats</h2>
+                    <span class="absolute icon-feather-edit mr-4 text-xl uk-position-center-right cursor-pointer"></span>
+                </div>
+                <div class="messages-inbox-inner" data-simplebar>
+                    <ul>
+                        {% for user in users %}
+
+                        {% if user.username == request.user.username %}
+
+                        {% else %}
+                        
+                        
+
+                        <li>
+                            <a href="/chats/{{user.id}}">
+                                <div class="message-avatar"><i class="status-icon status-online"></i><img src="assets/images/avatars/avatar-1.jpg" alt=""></div>
+
+                                <div class="message-by">
+                                    <div class="message-by-headline">
+                                        <h5>{{user.username}}</h5>
+                                        <span>4 hours ago</span>
+                                    </div>
+                                    <p>ultimo mensaje</p>
+                                </div>
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+
+                        
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="message-content">
+
+                <div class="messages-headline">
+                    <h4 class="capitalize"> {{user.username}} </h4>
+                    <a href="#" class="message-action text-red-500"><i class="icon-feather-trash-2"></i> <span class="md:inline hidden"> Delete Conversation</span> </a>
+                </div>
+                
+                <div class="message-content-scrolbar" data-simplebar>
+
+                    <!-- Message Content Inner -->
+                    <div class="message-content-inner" style="height: 400px; overflow: auto;">
+                            
+                            <!-- Time Sign -->
+                            <div class="message-time-sign">
+                                <span>28 June, 2020</span>
+                            </div>
+                            {% for mensaje in mensajes %}
+                            {% if mensaje.username == request.user.username %}
+
+                            <div class="message-bubble me">
+                                <div class="message-bubble-inner">
+                                    <div class="message-avatar"><img src="assets/images/avatars/avatar-2.jpg" alt=""></div>
+                                    <div class="message-text"><p>{{mensaje.body}}</p></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            {% else %}
+                            <div class="message-bubble">
+                                <div class="message-bubble-inner">
+                                    <div class="message-avatar"><img src="assets/images/avatars/avatar-2.jpg" alt=""></div>
+                                    <div class="message-text"><p>{{mensaje.body}}</p></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+
+                            
+
+                            <div class="message-bubble">
+                                <div class="message-bubble-inner">
+                                    <div class="message-avatar"><img src="assets/images/avatars/avatar-2.jpg" alt=""></div>
+                                    <div class="message-text">
+                                        <!-- Typing Indicator -->
+                                        <div class="typing-indicator">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                    </div>
+                    <!-- Message Content Inner / End -->
+                    
+                    <!-- Reply Area -->
+                    <div class="message-reply">
+                        
+                        <textarea cols="1" rows="1" placeholder="Tu mensaje" id="textMensaje"></textarea>
+                        <button class="button ripple-effect" id="btnEnviar">Enviar</button>
+                    </div>
+                    <form method="post" id="formMensaje">
+                        {% csrf_token %}
+                        <input type="text" id="bodyMensaje" name="bodyMensaje" hidden>
+                    </form>
+                    <script>
+                        document.getElementById("btnEnviar").addEventListener("click", function(){
+                            document.getElementById("bodyMensaje").value = document.getElementById("textMensaje").value;
+                            document.getElementById("formMensaje").submit();
+                        });
+                    </script>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div> 
+    
+</div>
+{% endblock %}

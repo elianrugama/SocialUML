@@ -1,0 +1,55 @@
+{% extends "feed.html" %}
+{% load static %}
+
+{% block content %}
+<div class=""> 
+  
+    <div class="messages-container">
+        <div class="">
+
+           
+            <div class="messages-inbox">
+                <div class="messages-headline">
+                    <div class="input-with-icon" hidden>
+                            <input id="autocomplete-input" type="text" placeholder="Search">
+                        <i class="icon-material-outline-search"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold">Chats</h2>
+                    <span class="absolute icon-feather-edit mr-4 text-xl uk-position-center-right cursor-pointer"></span>
+                </div>
+                <div class="messages-inbox-inner" data-simplebar>
+                    <ul>
+                        {% for mensaje in mensajes %}
+                        {% if mensaje.username == request.user.username %}
+                        {{pass}}
+                        {% else %}
+                        <li>
+                            <a href="/chats/{{mensaje.id}}">
+                                <div class="message-avatar"><i class="status-icon status-online"></i><img src="assets/images/avatars/avatar-1.jpg" alt=""></div>
+
+                                <div class="message-by">
+                                    <div class="message-by-headline">
+                                        <h5 class="capitalize">{{mensaje.username}}</h5>
+                                        <span>4 hours ago</span>
+                                    </div>
+                                    <p>{{mensaje.body}}</p>
+                                </div>
+                            </a>
+                        </li>
+                        <hr>
+                        {% endif %}
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+
+
+            
+
+
+        </div>
+    </div> 
+    
+</div>
+{% endblock %}
