@@ -1,43 +1,24 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
-
-<!-- Mirrored from demo.foxthemes.net/socialite/feed.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Aug 2023 22:09:46 GMT -->
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Favicon -->
     <link href="{% static 'assets/images/favicon.png" rel="icon" type="image/png">
-
-    <!-- Basic Page Needs
-        ================================================== -->
     <title>SocialUML</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Socialite is - Professional A unique and beautiful collection of UI elements">
-
-    <!-- icons
-    ================================================== -->
     <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
-
-    <!-- CSS 
-    ================================================== -->
     <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link href="{% static 'assets/css/tailwind.css'%}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
-
 </head>
-
 <body onload="getPosts()">
     <input type="hidden" value="{{user.username}}" id="userUsername">
     <input type="hidden" value="{{user.id}}" id="userImage">
     <input type="hidden" value="{{crf_token}}" id="csrfmiddlewaretoken">
-
     <div id="wrapper">
         <!-- Header -->
         <header>
@@ -266,7 +247,7 @@
                             </svg>
                             <span> Videos</span></a>
                     </li>
-                    <li><a href="/groups">
+                    <li><a href="/grupos">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                 class="text-blue-500">
                                 <path
@@ -823,8 +804,8 @@
 
     <!-- Javascript
     ================================================== -->
-    <script src="{% static '../../code.jquery.com/jquery-3.6.0.min.js'%}"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="{% static 'assets/js/tippy.all.min.js'%}"></script>
     <script src="{% static 'assets/js/uikit.js'%}"></script>
     <script src="{% static 'assets/js/simplebar.js'%}"></script>
@@ -832,10 +813,11 @@
     <script src="{% static 'assets/js/main.js'%}"></script>
 
     <script src="{% static 'assets/js/bootstrap-select.min.js'%}"></script>
-    <script src="{% static '../../unpkg.com/ionicons%405.2.3/dist/ionicons.js'%}"></script>
+    <<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
 
-<!-- Mirrored from demo.foxthemes.net/socialite/feed.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Aug 2023 22:10:03 GMT -->
+
 
 </html>
