@@ -32,7 +32,7 @@ def Post(request):
     if request.method == 'POST':
         print(request.FILES)
         print(request.POST)
-        image = request.FILES['image']
+        image = request.FILES['imagePost']
         title = request.POST['title']
         id_user = request.user
 

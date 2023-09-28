@@ -47,39 +47,17 @@
                             autocomplete="off">
                         <div uk-drop="mode: click" class="header_search_dropdown">
 
-                            <h4 class="search_title"> Recently </h4>
+                            <h4 class="search_title"> Reciente </h4>
                             <ul>
+                                {% for user in users %}
                                 <li>
-                                    <a href="#">
-                                        <img src="{{post.image}}" alt="" class="list-avatar">
-                                        <div class="list-name"> Erica Jones </div>
+                                    <a href="{{user.id}}">
+                                        <img src="{{user.username}}" alt="" class="list-avatar">
+                                        <div class="list-name capitalize"> {{user.username}}</div>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{post.image}}" alt="" class="list-avatar">
-                                        <div class="list-name"> Coffee Addicts </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{post.image}}" alt="" class="list-avatar">
-                                        <div class="list-name"> Mountain Riders </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{post.image}}" alt="" class="list-avatar">
-                                        <div class="list-name"> Property Rent And Sale </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{% static 'assets/images/avatars/avatar-5.jpg'%}" alt=""
-                                            class="list-avatar">
-                                        <div class="list-name"> Erica Jones </div>
-                                    </a>
-                                </li>
+                                {% endfor %}
+                                
                             </ul>
 
                         </div>
@@ -593,9 +571,7 @@
 
                         <div class="flex flex-1 items-center justify-center space-x-2">
 
-                            <div>
-                                <input type="file" accept="image/*" id="fileFotos" class="hidden" name="image" />
-                            </div>
+                           
 
                             <div>
                                 <div class="bg-blue-100 h-9 p-1.5 rounded-full text-blue-600 w-9 cursor-pointer">
@@ -647,7 +623,7 @@
                         uk-tooltip="title: Close ; pos: bottom ;offset:7"></button>
                 </div>
                 <div class="flex flex-1 items-start space-x-4 p-5">
-                    <img src="{% static 'assets/images/avatars/avatar-2.jpg'%}"
+                    <img src=""
                         class="bg-gray-200 border border-white rounded-full w-11 h-11">
                     <div class="flex-1 pt-2">
                         <textarea name="title"
@@ -656,17 +632,24 @@
                     </div>
 
                 </div>
+                <img src="" alt="" id="imagenPost" style="display: none; height: 100px;">
                 <div class="bsolute bottom-0 p-4 space-x-4 w-full">
                     <div class="flex bg-gray-50 border border-purple-100 rounded-2xl p-2 shadow-sm items-center">
                         <div class="lg:block hidden ml-1">
-                            <input type="text" placeholder="Agrega tu post">
+                            <input type="text" name="body" placeholder="Agrega tu post">
                         </div>
                         <div class="flex flex-1 items-center lg:justify-end justify-center space-x-2">
+                            
 
                             <div>
-                                <input type="file" accept="image/*" id="fileFotos" class="hidden" name="image" />
+                                <input type="file" accept="image/*" id="fileFotos" class="hidden" name="imagePost" />
                             </div>
-
+                            <script>
+                                document.getElementById("fileFotos").onchange = function (e) {
+                                    document.getElementById("imagenPost").src = URL.createObjectURL(e.target.files[0]);
+                                    document.getElementById("imagenPost").style.display = "block";
+                                };
+                            </script>
                             <div onclick="document.getElementById('fileFotos').click();">
                                 <svg class="bg-blue-100 h-9 p-1.5 rounded-full text-blue-600 w-9 cursor-pointer"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -736,10 +719,7 @@
                 <div class="flex items-center w-full justify-between border-t p-3">
 
                     <select class="selectpicker mt-2 story">
-                        <option>Only me</option>
-                        <option>Every one</option>
-                        <option>People I Follow </option>
-                        <optionion>People Follow Me</optionion>
+                        <option>Publico</option>
                     </select>
 
                     <div class="flex space-x-2">
