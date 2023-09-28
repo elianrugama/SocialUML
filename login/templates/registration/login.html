@@ -9,7 +9,6 @@
       crossorigin="anonymous"
     ></script>
     <title>Social-UML | Iniciar sesión</title>
-    <link rel="stylesheet" href="{% static 'css/login.css'%}" />
   </head>
   <body>
     
@@ -30,7 +29,7 @@
             </div>
             <button type="submit" class="btn solid">Iniciar sesión</button>
             <p class="social-text">O escanea el código QR de su carnet</p>
-            <img src="{% static 'img/qrcode.png' %}" id="qrimg" alt="QR" width="50" height="50" onclick="startCamera()">
+            <img src="/media/img/qrcode.png" id="qrimg" alt="QR" width="50" height="50" onclick="startCamera()">
             <br>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -97,7 +96,7 @@
               Registrarse
             </button>
           </div>
-          <img src="{% static '/img/log.svg'%}" class="image" alt="" />
+          <img src="/media/img/log.svg" class="image" alt="" />
         </div>
         <div class="panel right-panel">
           <div class="content">
@@ -109,7 +108,7 @@
               Iniciar sesión
             </button>
           </div>
-          <img src="{%static '/img/register.svg'%}" class="image" alt="" />
+          <img src="/media/img/register.svg" class="image" alt="" />
         </div>
       </div>
     </div>
