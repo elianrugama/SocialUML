@@ -11,6 +11,10 @@ urlpatterns = [
     path('chats/', views.Chats, name='chats'),
     path('chats/<int:id_user>/', views.Chat, name='chat'),
     path('eliminarcomentarios/<int:id>', views.Eliminarcomentarios, name='eliminarcomentarios'),
+    path('grupos/', views.Home, name='home'),
+    path('paginas/', views.Home, name='home'),
+    path('eventos/', views.Home, name='home'),
+
     
 
 

@@ -92,16 +92,21 @@ async function getPosts() {
                         <div class="p-4 space-y-3">
 
                             <div class="flex space-x-4 lg:font-bold">
-                                <a href="#" class="flex items-center space-x-2">
+                                <button class="flex items-center space-x-2">
                                     <div class="p-2 rounded-full  text-black lg:bg-gray-100 dark:bg-gray-600">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                            fill="currentColor" width="22" height="22" class="dark:text-gray-100"  style="color: #3b5998;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" id="like${post.id}"
+                                            fill="currentColor" width="22" height="22" class="dark:text-gray-100"  
+                                            ${
+                                                //verficar si el id esta en el array de likes guardados en localstorage
+                                                localStorage.getItem('likes') && JSON.parse(localStorage.getItem('likes')).includes(post.id) ? `onclick="dislike(${post.id});" style="color: #ff0000;"` : `onclick="like(${post.id});" style="color: #000000;"`
+                                            }
+                                            >
                                             <path
                                                 d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
                                         </svg>
                                     </div>
                                     <div> Like</div>
-                                </a>
+                                </button>
                                 <button class="flex items-center space-x-2" onclick="cargarComentarios('comentarios${post.id}',${post.id});">
                                     <div class="p-2 rounded-full  text-black lg:bg-gray-100 dark:bg-gray-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -282,7 +287,7 @@ function enviarComentario(id) {
     }).then(function (data) {
         console.log(data);
         form.reset();
-        cargarComentarios2('comentarios' + id, id);
+        cargarComentarios2(id);
     });
 
 
@@ -296,4 +301,38 @@ function eliminarComentario(id,div2) {
         console.log(res);
         cargarComentarios2(div2);
     });
+}
+
+function like(id) {
+    var likes = [];
+    if (localStorage.getItem('likes')) {
+        likes = JSON.parse(localStorage.getItem('likes'));
+    }
+    likes.push(id);
+    localStorage.setItem('likes', JSON.stringify(likes));
+    if (document.getElementById('like' + id).style.color == "#ff0000") {
+        document.getElementById('like' + id).style.color = "#000000";
+    }else{
+        document.getElementById('like' + id).style.color = "#ff0000";
+    }
+    //cambiar el onclick del boton like
+    document.getElementById('like'+id).setAttribute("onclick","dislike("+id+");");
+    
+    
+}
+function dislike(id) {
+    var likes = [];
+    if (localStorage.getItem('likes')) {
+        likes = JSON.parse(localStorage.getItem('likes'));
+    }
+    likes = likes.filter(like => like != id);
+    localStorage.setItem('likes', JSON.stringify(likes));
+    if (document.getElementById('like' + id).style.color == "#000000") {
+        document.getElementById('like' + id).style.color = "#ff0000";
+    }else{
+        document.getElementById('like' + id).style.color = "#000000";
+    }
+    //cambiar el onclick del boton like
+    document.getElementById('like'+id).setAttribute("onclick","like("+id+");");
+    
 }
